@@ -41,5 +41,90 @@ body {
   }
   
   .center {
-    text-align: center;
+    text-align: center; 
+  }
+
+  @keyframes flicker {
+    0%, 30%, 33%, 55%, 100% {
+        opacity: .99;
+    }
+
+    31%, 50%, 56% {
+      opacity: 0.3;
+    }
+  }
+
+  @keyframes slide {
+    0%, 8.3% { left: -100%; opacity: 0; }
+    8.3%,25% { left: 25%; opacity: 1; }
+    33.33%, 100% { left: 110%; opacity: 0; }
+  }
+
+  @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+  @keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+  }
+
+      .neon{
+    font-family: 'Permanent+Marker', cursive; 
+    transition-duration: 4s;
+    animation: 1s slide-left;
+    transition: ease-in;
+    transition: width 10s linear 2s;
+    font-size: 108px;
+    color: rgb(35, 65, 73);
+    position: absolute;
+    top: 10%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    font-weight: 400;
+    letter-spacing: 10px;
+    text-shadow: 10px 10px 10px #E64616, 5px 5px 60px #A5CA1A; 
+  }
+
+    .neon1{
+    font-family: 'Black+And+White+Picture', cursive; 
+    font-size: 50px;
+    -webkit-transition-delay: 4s;
+    transition-delay: 4s;
+    transition: ease-in;
+    transition-duration: 2s;
+    color: rgb(246, 249, 250);
+    position: absolute;
+    top: 37%;
+    left: 34%;
+    transform: translate(-50%, -50%);
+    font-weight: 200;
+    letter-spacing: 5px;
+  }
+
+  .flicker-fast{
+    animation: flicker 3s linear infinite;
+  }
+
+  .flicker-faster{
+    animation: flicker 2s linear infinite;
+  }
+
+  .flicker-fasterest{
+    animation: flicker 2.5s linear infinite;
+  }
+
+  .flicker-fastest{
+    animation: flicker 1s linear infinite;
+  }
+
+  .slide-heading{
+    animation-duration: 5s;
+    animation-timing-function: ease-in;
+  }
+
+  .slide-byline{
+    animation-duration: 8s;
+    animation-timing-function: ease-in
   }

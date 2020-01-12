@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Black+And+White+Picture" rel="stylesheet">
+
+    <link rel="stylesheet" href="stylesheets/fonts.css" type="text/css">
+
+    <style>
+
+      .i1{
+          position: absolute;
+          width: 350px;
+          height: 350px;
+          top: 25px;
+          right:30px;
+      }
+
+      .i2{
+          position: absolute;
+          width: 350px;
+          height: 350px;
+          bottom: 25px;
+          right: 30px;
+      }
+
+        .menu{
+         position: absolute;
+         color: blanchedalmond;
+         font-size: 35px;
+          bottom: 12%;
+          left: 8%;
+        }
+    </style>
+  </head>
+  <body>
+    <h1 class="neon">
+      S<span class="flicker-faster">n</span><span class="flicker-fastest">a</span><span class="flicker-fasterest">k</span>E<span class="flicker-faster">S a</span><span class="flicker-fast">ND </span><span class="flicker-fastest">L</span>a<span class="flicker-fast">d</span><span class="flicker-fasterest">D</span>e<span class="flicker-fastest">R</span>s
+    </h1>
+
+    <h2 class="neon1">
+        A<span class="flicker-fast"> g</span>a<span class="flicker-faster">m</span>e for 2 - 4 playe<span class="flicker-fasterest">r</span>s!
+    </h2>
+
+    <main>
+
+        <ul class="menu">
+          <li><a href="game.html">Play</a></li>
+          <li><a href="howToPlay.html">How to play</a></li>
+          <li><a href="settings.html">Settings</a></li>
+          <li><a href="splash.ejs">Stats</a></li>
+          <li><a href="credits.html">Credits</a></li>
+          <li><a href="self.close()">Exit</a></li>
+        </ul>
+        
+        <div class="photo">
+            <img class="i1" src="images/SnLtop.jpeg"/>
+            <img class="i2" src="images/SnLbottom.jpg"/>
+        </div>
+
+        <audio autoplay>
+          <source src="songs/poison.mp3" type="audio/mpeg">
+        </audio>
+    </main>
+
+    <script>
+            window.onload = function(){
+            document.body.style.backgroundColor= 'black';
+        }
+    </script>
+  </body>
+</html>
