@@ -135,3 +135,5 @@ wss.on("connection", function (ws) {
         }
     })
 });
+
+server.listen(3000);
