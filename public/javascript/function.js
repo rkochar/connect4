@@ -29,7 +29,7 @@ function checkElement(e) {
         element.innerHTML = "Player 1";
     }
     else {
-        gameBoard3[pop.charAt(0)][pop.charAt(1)] = 1;
+        gameBoard3[pop.charAt(0)][pop.charAt(1)] = 2;
         var button = document.getElementById(pop + "");
         button.style.background = '#fffb1f';
         alert("next player");
