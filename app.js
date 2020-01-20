@@ -20,10 +20,11 @@ var indexRouter = require("./routes/index");
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 
+var server = http.createServer(app);
 app.get("/play", indexRouter);
 const wss = new websocket.Server({ server });
 var websockets = {};
-var server = http.createServer(app);
+
 let gamesStarted = 0
 let gamesOngoing = function () {
     let glen = games.length
@@ -135,5 +136,3 @@ wss.on("connection", function (ws) {
         }
     })
 });
-
-server.listen(3000);
