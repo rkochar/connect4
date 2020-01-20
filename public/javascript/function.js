@@ -12,6 +12,24 @@ var gameBoard3 = [
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
     [, 0, 0, 0, 0, 0, 0]]
+
+    /*
+When client first connects,
+Check if you already have red -> then tell client that client is yellow, Store yellow on client.
+
+    function checkElement() {
+    Red plays:
+        Send board to yellow.
+         check if red won.
+         If red won, tell yellow that yellow lost.
+         else, tell yellow to play    
+    }
+
+    while (noWin() && canPlay()) {
+        tell red play
+        tell yellow
+    }
+    */
 function checkElement(e) {
     var pop = e.toElement.id;
     var type = e.toElement.type + "";

@@ -3,35 +3,38 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>
-    Verbinden 4</title>
+  <title>GameConnect4</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+  <link rel="stylesheet" href="stylesheets/main.css">
   <style id="a11y-styles"></style>
 </head>
 
-<body>
-  <div class="keyboard-friendly">
-    <img class="keyboard-friendly-img" src="img/arrow-keys.svg" />
-  </div>
+<body onload="checkScreen()">
   <section class="wrapper">
     <div class="center">
       <h1 class="title">
         CONN3CT 4 !</h1>
       <div id="top-text" class="top-text">
         <h2 class="primary">
-          <span id="prefix">Current Player is: </span>
-          <span id="current-player">Player 1</span>
+          <span id="prefix" style="color: white">Current Player is: </span>
+          <span id="current-player" style="color: white">Player 1</span>
         </h2>
         <h3 class="secondary">
-          <span>Next up is: </span>
-          <span id="other-player">Player 2</span>
-        </h3>
+          <span style="color: white">Next up is: </span>
+          <span id="other-player" style="color: white">Player 2</span>
+        </h3> 
+
+        <button class="fullScreen" onclick="openFullscreen();"></button>
+        <button class="closeScreen" onclick="closeFullscreen();">Close Fullscreen</button>
+
+
         </h2>
       </div>
+
+
     </div>
     <table id="board" class="board">
       <tbody>
@@ -92,7 +95,10 @@
       </tbody>
     </table>
   </section>
-  <script src="javascript/function.js"></script>
+
+    <script src="javascript/splash.js"></script>
+    <script src="javascript/function.js"></script>
+    <script type="text/javascript"></script>
 </body>
 
 </html>

@@ -5,7 +5,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Black+And+White+Picture" rel="stylesheet">
 
-    <link rel="stylesheet" href="stylesheets/fonts.css" type="text/css">
+    <link rel="stylesheet" href="stylesheets/main.css" type="text/css">
 
     <style>
 
@@ -36,35 +36,47 @@
   </head>
   <body>
     <h1 class="neon">
-      S<span class="flicker-faster">n</span><span class="flicker-fastest">a</span><span class="flicker-fasterest">k</span>E<span class="flicker-faster">S a</span><span class="flicker-fast">ND </span><span class="flicker-fastest">L</span>a<span class="flicker-fast">d</span><span class="flicker-fasterest">D</span>e<span class="flicker-fastest">R</span>s
+      C<span class="flicker-faster">o</span><span class="flicker-fastest">N</span><span class="flicker-fasterest">n</span>E<span class="flicker-faster">C</span><span class="flicker-fast">T </span><span class="flicker-fastest">4</span>
     </h1>
 
     <h2 class="neon1">
-        A<span class="flicker-fast"> g</span>a<span class="flicker-faster">m</span>e for 2 - 4 playe<span class="flicker-fasterest">r</span>s!
+        A<span class="flicker-fast"> g</span>a<span class="flicker-faster">m</span>e for 2 playe<span class="flicker-fasterest">r</span>s!
     </h2>
 
     <main>
 
         <ul class="menu">
-          <li><a href="http://localhost:3000/game.html">Play</a></li>
-          <li><a href="howToPlay.html">How to play</a></li>
-          <li><a href="settings.html">Settings</a></li>
-          <li><a href="splash.ejs">Stats</a></li>
-          <li><a href="credits.html">Credits</a></li>
+          <li class="activeButton"><a href="http://localhost:3000/game.html">Play</a></li>
           <li><a href="self.close()">Exit</a></li>
         </ul>
         
-        <div class="photo">
+<!--         <div class="photo">
             <img class="i1" src="images/SnLtop.jpeg"/>
             <img class="i2" src="images/SnLbottom.jpg"/>
         </div>
-
-        <audio autoplay>
+ -->
+<!--         <audio autoplay>
           <source src="songs/poison.mp3" type="audio/mpeg">
-        </audio>
+        </audio> -->
+        <section id="left">
+            <h3>
+                <%= gamesStarted %> game started
+            </h3>
+            <h3>
+                <%= gamesOngoing %> game ongoing
+            </h3>
+            <h3>
+                <%= gamesCompleted %> game completed
+            </h3>
+            <h3 id="userVisits">
+                <h3>
+
+        </section>
     </main>
 
-    <script>
+    <script src="javascript/cookie.js"></script>
+    <script src="javascript/splash.js"></script>
+    <script >
             window.onload = function(){
             document.body.style.backgroundColor= 'black';
         }

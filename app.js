@@ -21,9 +21,9 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 
 app.get("/play", indexRouter);
+var server = http.createServer(app);
 const wss = new websocket.Server({ server });
 var websockets = {};
-var server = http.createServer(app);
 let gamesStarted = 0
 let gamesOngoing = function () {
     let glen = games.length
@@ -135,5 +135,3 @@ wss.on("connection", function (ws) {
         }
     })
 });
-
-server.listen(3000);

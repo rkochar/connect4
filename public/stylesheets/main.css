@@ -4,12 +4,13 @@ body {
     margin: 0;
   }
 
-  body{ background-color: #036ffc;}
+  body{ background-color: black;}
 
   
   .title {
     font-size: 2rem;
   }
+
   @media (max-width: 460px) {
     .title {
       font-size: 1.66rem;
@@ -20,6 +21,7 @@ body {
     margin: 50px auto 0;
     width: 450px;
   }
+
   @media (max-width: 460px) {
     .wrapper {
       margin: 20px auto 0;
@@ -36,12 +38,13 @@ body {
     margin: 1px;
     background: white;
   }
+
   .board button:hover {
     filter: brightness(75%);
   }
   
   .center {
-    text-align: center; 
+    text-align: bottom; 
   }
 
   @keyframes flicker {
@@ -70,7 +73,7 @@ body {
     to   { opacity: 0; }
   }
 
-      .neon{
+    .neon{
     font-family: 'Permanent+Marker', cursive; 
     transition-duration: 4s;
     animation: 1s slide-left;
@@ -127,4 +130,55 @@ body {
   .slide-byline{
     animation-duration: 8s;
     animation-timing-function: ease-in
+  }
+
+  .prefix{
+    color: white
+  }
+
+  .title {
+    font-family: 'Permanent+Marker', cursive; 
+    transition-duration: 4s;
+    animation: 1s slide-left;
+    transition: ease-in;
+    transition: width 10s linear 2s;
+    font-size: 108px;
+    color: rgb(35, 65, 73);
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 400;
+    letter-spacing: 10px;
+    text-shadow: 10px 10px 10px #E64616, 5px 5px 60px #A5CA1A; 
+  }
+
+   .back{
+    color: red
+    position: relative;
+    left: 10px  ;
+  }
+
+  .fullScreen::before {
+    content: "Open Fullscreen"
+  }
+
+  .closeScreen::after {
+    content: "Close FullScreen"
+    position: relative;
+    left: 2px
+    transition: width 2s, height 2s, background-color 5s, transform 10s;
+  }
+
+  .closeScreen:hover {
+    transform: rotate(70deg);
+    background-color: red;
+  }
+
+  .activeButton::active {
+    font: red
+  }
+
+  .left {
+    color: white
   }
