@@ -13,39 +13,37 @@ ws.onmessage = function (message) {
     var msg = JSON.parse(message.data)
     if (msg.type.localeCompare("board") == 0) {
         gameBoard3 = msg.id;
-        for( i=0;i<6;i++)
-        {
-            for( j =0;j<7;j++)
-            {
+        for (i = 0; i < 6; i++) {
+            for (j = 0; j < 7; j++) {
                 console.log(gameBoard3[i][j]);
-                if(gameBoard3[i][j]===1)
-                {
+                if (gameBoard3[i][j] === 1) {
                     console.log("dhdu");
-                    var button = document.getElementById(i+""+j);
+                    var button = document.getElementById(i + "" + j);
                     button.style.background = '#bf2121';
                 }
-                if(gameBoard3[i][j]===2)
-                {
+                if (gameBoard3[i][j] === 2) {
                     console.log("dhdu");
-                    var button = document.getElementById(i+""+j);
+                    var button = document.getElementById(i + "" + j);
                     button.style.background = '#fffb1f';
                 }
             }
         }
-    };
+    }
     if (msg.type.localeCompare("chal") == 0) {
         turn = true;
         check = msg.player;
-        if(check.localeCompare("A")==0)
-        {
+        if (check.localeCompare("A") == 0) {
             document.getElementById("current-player").innerHTML = "Player 1";
-            document.getElementById("other-player").innerHTML="Player 2";
-        }
-        else
-        {
+            document.getElementById("other-player").innerHTML = "Player 2";
+        } else {
             document.getElementById("current-player").innerHTML = "Player 2";
-            document.getElementById("other-player").innerHTML="Player 1";
+            document.getElementById("other-player").innerHTML = "Player 1";
         }
+    }
+
+    if (msg.type.localeCompare("lose") == 0) {
+        turn = false;
+        alert("You Lose")
     }
 
 }
@@ -61,25 +59,31 @@ function checkElement(e) {
             var sn = pop.charAt(1);
             pop = fn - 1 + "" + sn;
         }
-        if (check.localeCompare("A")==0) {
+        if (check.localeCompare("A") == 0) {
             if (turn) {
 
-                    gameBoard3[pop.charAt(0)][pop.charAt(1)] = 1;
-                    var button = document.getElementById(pop + "");
-                    button.style.background = '#bf2121';
-                    alert("next player ");
-                    document.getElementById("current-player").innerHTML = "Player 2";
-                    if (win()) {
-                        alert("u won");
-                    }
-                    var element = document.getElementById("other-player");
-                    element.innerHTML = "Player 1";
-                    var msg = {
-                        type: "turn",
-                        id: gameBoard3
+                gameBoard3[pop.charAt(0)][pop.charAt(1)] = 1;
+                var button = document.getElementById(pop + "");
+                button.style.background = '#bf2121';
+                alert("next player ");
+                document.getElementById("current-player").innerHTML = "Player 2";
+
+                var element = document.getElementById("other-player");
+                element.innerHTML = "Player 1";
+                var msg = {
+                    type: "turn",
+                    id: gameBoard3
+                };
+                ws.send(JSON.stringify(msg));
+                turn = false;
+                if (win()) {
+                    var won = {
+                        type: "win",
+                        id: "A"
                     };
-                    ws.send(JSON.stringify(msg));
-                    turn = false;
+                    alert("You won");
+                    ws.send(JSON.stringify(won));
+                }
 
             }
         } else {
@@ -89,9 +93,7 @@ function checkElement(e) {
                 button.style.background = '#fffb1f';
                 alert("next player");
                 document.getElementById("current-player").innerHTML = "Player 1";
-                if (win()) {
-                    alert("u won");
-                }
+
                 var element = document.getElementById("other-player");
                 element.innerHTML = "Player 2";
                 var msg = {
@@ -100,6 +102,15 @@ function checkElement(e) {
                 };
                 ws.send(JSON.stringify(msg));
                 turn = false;
+                if (win()) {
+
+                    var won = {
+                        type: "win",
+                        id: "B"
+                    };
+                    alert("You won");
+                    ws.send(JSON.stringify(won));
+                }
             }
         }
 

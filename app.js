@@ -102,6 +102,23 @@ wss.on("connection", function (ws) {
                 gameObj.playerA.send(JSON.stringify(board2));
             }
         }
+        if (msg.type.localeCompare("win") == 0) {
+            if(msg.id.localeCompare("A") == 0)
+            {
+                var lose = {
+                    type: "lose",
+                };
+                gameObj.playerB.send(JSON.stringify(lose));
+            }
+            else
+            {
+                var lose = {
+                    type: "lose",
+                };
+                gameObj.playerA.send(JSON.stringify(lose));
+
+            }
+        }
 
 
 
