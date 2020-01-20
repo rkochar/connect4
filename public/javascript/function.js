@@ -1,17 +1,55 @@
 var element = document.getElementById("board");
 var check = checkElement;
+element.addEventListener("click", check);
 var ws = new WebSocket('ws://localhost:3000');
 ws.onopen = function (event) {
     console.log('Connection is open ...');
 };
-element.addEventListener("click", check);
-var gameBoard3 = [
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [, 0, 0, 0, 0, 0, 0]]
+var turn = false;
+var gameBoard3 = [];
+var check = 0;
+ws.onmessage = function (message) {
+    var msg = JSON.parse(message.data)
+    if (msg.type.localeCompare("board") == 0) {
+        gameBoard3 = msg.id;
+        for( i=0;i<6;i++)
+        {
+            for( j =0;j<7;j++)
+            {
+                console.log(gameBoard3[i][j]);
+                if(gameBoard3[i][j]===1)
+                {
+                    console.log("dhdu");
+                    var button = document.getElementById(i+""+j);
+                    button.style.background = '#bf2121';
+                }
+                if(gameBoard3[i][j]===2)
+                {
+                    console.log("dhdu");
+                    var button = document.getElementById(i+""+j);
+                    button.style.background = '#fffb1f';
+                }
+            }
+        }
+    };
+    if (msg.type.localeCompare("chal") == 0) {
+        turn = true;
+        check = msg.player;
+        if(check.localeCompare("A")==0)
+        {
+            document.getElementById("current-player").innerHTML = "Player 1";
+            document.getElementById("other-player").innerHTML="Player 2";
+        }
+        else
+        {
+            document.getElementById("current-player").innerHTML = "Player 2";
+            document.getElementById("other-player").innerHTML="Player 1";
+        }
+    }
+
+}
+
+
 function checkElement(e) {
     var pop = e.toElement.id;
     var type = e.toElement.type + "";
@@ -22,31 +60,46 @@ function checkElement(e) {
             var sn = pop.charAt(1);
             pop = fn - 1 + "" + sn;
         }
-        if (document.getElementById("current-player").innerHTML.localeCompare("Player 1") == 0) {
-            gameBoard3[pop.charAt(0)][pop.charAt(1)] = 1;
-            var button = document.getElementById(pop + "");
-            button.style.background = '#bf2121';
-            alert("next player");
-            document.getElementById("current-player").innerHTML = "Player 2";
-            if(win())
-            {
-                alert("u won");
+        if (check.localeCompare("A")==0) {
+            if (turn) {
+
+                    gameBoard3[pop.charAt(0)][pop.charAt(1)] = 1;
+                    var button = document.getElementById(pop + "");
+                    button.style.background = '#bf2121';
+                    alert("next player ");
+                    document.getElementById("current-player").innerHTML = "Player 2";
+                    if (win()) {
+                        alert("u won");
+                    }
+                    var element = document.getElementById("other-player");
+                    element.innerHTML = "Player 1";
+                    var msg = {
+                        type: "turn",
+                        id: gameBoard3
+                    };
+                    ws.send(JSON.stringify(msg));
+                    turn = false;
+
             }
-            var element = document.getElementById("other-player");
-            element.innerHTML = "Player 1";
-        }
-        else {
-            gameBoard3[pop.charAt(0)][pop.charAt(1)] = 2;
-            var button = document.getElementById(pop + "");
-            button.style.background = '#fffb1f';
-            alert("next player");
-            document.getElementById("current-player").innerHTML = "Player 1";
-            if(win())
-            {
-                alert("u won");
+        } else {
+            if (turn) {
+                gameBoard3[pop.charAt(0)][pop.charAt(1)] = 2;
+                var button = document.getElementById(pop + "");
+                button.style.background = '#fffb1f';
+                alert("next player");
+                document.getElementById("current-player").innerHTML = "Player 1";
+                if (win()) {
+                    alert("u won");
+                }
+                var element = document.getElementById("other-player");
+                element.innerHTML = "Player 2";
+                var msg = {
+                    type: "turn",
+                    id: gameBoard3
+                };
+                ws.send(JSON.stringify(msg));
+                turn = false;
             }
-            var element = document.getElementById("other-player");
-            element.innerHTML = "Player 2";
         }
 
     }
@@ -57,8 +110,8 @@ function win() {
     var width = 7;
     var n = 0;
     var player
-    for ( r = 0; r < height; r++) { // iterate rows, bottom to top
-        for ( c = 0; c < width; c++) { // iterate columns, left to right
+    for (r = 0; r < height; r++) { // iterate rows, bottom to top
+        for (c = 0; c < width; c++) { // iterate columns, left to right
             player = gameBoard3[r][c];
             if (player == 0)
                 continue; // don't check empty slots
