@@ -1,14 +1,17 @@
 var express = require("express");
 var http = require("http");
 var websocket = require("ws");
+let ejs = require('ejs')
 
 var port = process.argv[2];
 var app = express();
 
 app.use(express.static(__dirname + "/public"));
 
-app.get("/", function (req, res, err) {
-    res.sendFile(__dirname + "/public/splash.html")
+app.set('view engine', 'ejs')
+app.get('/', function(req, res) {
+    //example of data to render; here gameStatus is an object holding this information
+    res.render('splash.ejs', { });
 })
 var Game = require("./game");
 

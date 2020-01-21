@@ -74,24 +74,24 @@ body {
   }
 
     .neon{
-    font-family: 'Permanent+Marker', cursive; 
+    font-family: 'Segoe UI', cursive;
     transition-duration: 4s;
     animation: 1s slide-left;
     transition: ease-in;
     transition: width 10s linear 2s;
     font-size: 108px;
-    color: rgb(35, 65, 73);
+    color: rgb(248, 255, 238);
     position: absolute;
     top: 10%;
     left: 40%;
     transform: translate(-50%, -50%);
     font-weight: 400;
     letter-spacing: 10px;
-    text-shadow: 10px 10px 10px #E64616, 5px 5px 60px #A5CA1A; 
+    text-shadow: 10px 10px 10px #F15942;
   }
 
     .neon1{
-    font-family: 'Black+And+White+Picture', cursive; 
+    font-family: 'Segoe UI', cursive;
     font-size: 50px;
     -webkit-transition-delay: 4s;
     transition-delay: 4s;
@@ -150,7 +150,6 @@ body {
 }
 
   .title {
-    font-family: 'Permanent+Marker', cursive; 
     transition-duration: 4s;
     animation: 1s slide-left;
     transition: ease-in;
@@ -163,11 +162,11 @@ body {
     transform: translate(-50%, -50%);
     font-weight: 400;
     letter-spacing: 10px;
-    text-shadow: 10px 10px 10px #E64616, 5px 5px 60px #A5CA1A; 
+    text-shadow: 10px 10px 10px #F15942;
   }
 
    .back{
-    color: red
+    color: red;
     position: relative;
     left: 10px  ;
   }
@@ -177,9 +176,9 @@ body {
   }
 
   .closeScreen::after {
-    content: "Close FullScreen"
+    content: "Close FullScreen";
     position: relative;
-    left: 2px
+    left: 2px;
     transition: width 2s, height 2s, background-color 5s, transform 10s;
   }
 
