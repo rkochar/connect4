@@ -60,12 +60,18 @@ wss.on("connection", function (ws) {
         type: "board",
         id: currentGame.transitionMatrix,
     };
-    if (playerType == 'A') {
-        var chal = {
-            type: "chal",
-            player:"A"
+    if (playerType == 'B') {
+        let gameObj = websockets[con.id];
+        var waiting1 = {
+            type: "waiting",
+            player: "A"
         };
-        con.send(JSON.stringify(chal));
+        var waiting2 = {
+            type: "waiting",
+            player: "B"
+        };
+        gameObj.playerA.send(JSON.stringify(waiting1));
+        gameObj.playerB.send(JSON.stringify(waiting2));
     }
     con.send(JSON.stringify(msg));
     ws.on("message", function incoming(message) {
@@ -73,45 +79,40 @@ wss.on("connection", function (ws) {
         var msg = JSON.parse(message)
         if (msg.type.localeCompare("turn") == 0) {
             currentGame.transitionMatrix = msg.id
-            if(playerType=='A')
-            {
-                console.log(con.id+"idj")
+            if (playerType == 'A') {
+                console.log(con.id + "idj")
                 var board2 = {
                     type: "board",
-                    id:currentGame.transitionMatrix,
+                    id: currentGame.transitionMatrix,
                 };
                 var chal = {
                     type: "chal",
-                    player:"B"
+                    player: "B"
                 };
                 gameObj.playerB.send(JSON.stringify(chal));
                 gameObj.playerB.send(JSON.stringify(board2));
-            }
-            else{
+            } else {
                 var board2 = {
                     type: "board",
-                    id:currentGame.transitionMatrix,
-                    player:con.id
+                    id: currentGame.transitionMatrix,
+                    player: con.id
                 };
                 var chal = {
                     type: "chal",
-                    player:"A"
+                    player: "A"
                 };
-                console.log(currentGame.playerA.id+" "+currentGame.playerB.id)
+                console.log(currentGame.playerA.id + " " + currentGame.playerB.id)
                 gameObj.playerA.send(JSON.stringify(chal));
                 gameObj.playerA.send(JSON.stringify(board2));
             }
         }
         if (msg.type.localeCompare("win") == 0) {
-            if(msg.id.localeCompare("A") == 0)
-            {
+            if (msg.id.localeCompare("A") == 0) {
                 var lose = {
                     type: "lose",
                 };
                 gameObj.playerB.send(JSON.stringify(lose));
-            }
-            else
-            {
+            } else {
                 var lose = {
                     type: "lose",
                 };
@@ -121,12 +122,24 @@ wss.on("connection", function (ws) {
         }
 
 
-
-
     });
 
 
     ws.on("close", function (code) {
+        let gameObj = websockets[con.id];
+        if (playerType == 'A') {
+            var close = {
+                type: "close",
+                player: "A"
+            };
+            gameObj.playerB.send(JSON.stringify(close));
+        } else {
+            var close = {
+                type: "close",
+                player: "B"
+            };
+            gameObj.playerA.send(JSON.stringify(close));
+        }
     });
 });
 

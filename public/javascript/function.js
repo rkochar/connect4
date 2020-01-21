@@ -19,31 +19,56 @@ ws.onmessage = function (message) {
                 if (gameBoard3[i][j] === 1) {
                     console.log("dhdu");
                     var button = document.getElementById(i + "" + j);
-                    button.style.background = '#bf2121';
+                    button.style.background = '#F15942';
                 }
                 if (gameBoard3[i][j] === 2) {
                     console.log("dhdu");
                     var button = document.getElementById(i + "" + j);
-                    button.style.background = '#fffb1f';
+                    button.style.background = '#3F404A';
                 }
             }
+        }
+    }
+    if (msg.type.localeCompare("waiting") == 0) {
+
+        check = msg.player;
+        document.getElementById("prefix").innerHTML = "Current Player is: ";
+        document.getElementById("current-player").innerHTML = "Player A";
+        document.getElementById("prefix1").innerHTML = "Next Player is: ";
+        document.getElementById("other-player").innerHTML = "Player B";
+        if (check.localeCompare("A") == 0) {
+            alert("player joined")
+            turn = true
+            document.getElementById("title1").innerHTML = "You are Player A";
+        } else {
+            document.getElementById("title1").innerHTML = "You are Player B";
+
         }
     }
     if (msg.type.localeCompare("chal") == 0) {
         turn = true;
         check = msg.player;
         if (check.localeCompare("A") == 0) {
-            document.getElementById("current-player").innerHTML = "Player 1";
-            document.getElementById("other-player").innerHTML = "Player 2";
+            document.getElementById("current-player").innerHTML = "Player A";
+            document.getElementById("other-player").innerHTML = "Player B";
         } else {
-            document.getElementById("current-player").innerHTML = "Player 2";
-            document.getElementById("other-player").innerHTML = "Player 1";
+            document.getElementById("current-player").innerHTML = "Player B";
+            document.getElementById("other-player").innerHTML = "Player A";
         }
     }
 
     if (msg.type.localeCompare("lose") == 0) {
         turn = false;
         alert("You Lose")
+    }
+    if (msg.type.localeCompare("close") == 0) {
+        check = msg.player;
+        if (check.localeCompare("A") == 0) {
+            alert("player A has left the lobby")
+        }
+        else{
+            alert("player B has left the lobby")
+        }
     }
 
 }
@@ -64,12 +89,12 @@ function checkElement(e) {
 
                 gameBoard3[pop.charAt(0)][pop.charAt(1)] = 1;
                 var button = document.getElementById(pop + "");
-                button.style.background = '#bf2121';
-                alert("next player ");
-                document.getElementById("current-player").innerHTML = "Player 2";
+                button.style.background = '#F15942';
+                alert("next player");
+                document.getElementById("current-player").innerHTML = "Player B";
 
                 var element = document.getElementById("other-player");
-                element.innerHTML = "Player 1";
+                element.innerHTML = "Player A";
                 var msg = {
                     type: "turn",
                     id: gameBoard3
@@ -85,17 +110,19 @@ function checkElement(e) {
                     ws.send(JSON.stringify(won));
                 }
 
+            } else {
+                alert("not your turn")
             }
         } else {
             if (turn) {
                 gameBoard3[pop.charAt(0)][pop.charAt(1)] = 2;
                 var button = document.getElementById(pop + "");
-                button.style.background = '#fffb1f';
+                button.style.background = '#3F404A';
                 alert("next player");
-                document.getElementById("current-player").innerHTML = "Player 1";
+                document.getElementById("current-player").innerHTML = "Player A";
 
                 var element = document.getElementById("other-player");
-                element.innerHTML = "Player 2";
+                element.innerHTML = "Player B";
                 var msg = {
                     type: "turn",
                     id: gameBoard3
@@ -111,6 +138,8 @@ function checkElement(e) {
                     alert("You won");
                     ws.send(JSON.stringify(won));
                 }
+            } else {
+                alert("not your turn")
             }
         }
 

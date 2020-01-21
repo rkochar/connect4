@@ -4,7 +4,7 @@ body {
     margin: 0;
   }
 
-  body{ background-color: black;}
+  body{ background-color: #26628A;}
 
   
   .title {
@@ -36,7 +36,7 @@ body {
     border-radius: 50%;
     border: 0;
     margin: 1px;
-    background: white;
+    background: #D9F1FA;
   }
 
   .board button:hover {
@@ -133,8 +133,21 @@ body {
   }
 
   .prefix{
-    color: white
+    font-family: "Segoe UI";
+    color: #6BC5D3
   }
+.prefix1{
+  font-family: "Segoe UI";
+  color: #6BC5D3
+}
+.current-player{
+  font-family: "Segoe UI";
+  color: #6BC5D3
+}
+.other-player{
+  font-family: "Segoe UI";
+  color: #6BC5D3
+}
 
   .title {
     font-family: 'Permanent+Marker', cursive; 
@@ -184,5 +197,6 @@ body {
   }
 
 .title1 {
-  color: #34ff00
+  color: #6BC5D3;
+  font-family: "Segoe UI";
 }
