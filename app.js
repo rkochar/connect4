@@ -11,7 +11,7 @@ app.use(express.static(__dirname + "/public"));
 app.set('view engine', 'ejs')
 app.get('/', function(req, res) {
     //example of data to render; here gameStatus is an object holding this information
-    res.render('splash.ejs', { });
+    res.render('splash.ejs', {gamesCompleted: gamesCompleted,gameInitialized: gameInitialized});
 })
 var Game = require("./game");
 
@@ -122,6 +122,7 @@ wss.on("connection", function (ws) {
                 gameObj.playerA.send(JSON.stringify(lose));
 
             }
+            gamesCompleted++;
         }
 
 
