@@ -136,12 +136,14 @@ wss.on("connection", function (ws) {
                 type: "close",
                 player: "A"
             };
+            if(gameObj.playerB!=null)
             gameObj.playerB.send(JSON.stringify(close));
         } else {
             var close = {
                 type: "close",
                 player: "B"
             };
+            if(gameObj.playerA!=null)
             gameObj.playerA.send(JSON.stringify(close));
         }
     });
