@@ -4,7 +4,7 @@ body {
     margin: 0;
   }
 
-  body{ background-color: #26628A;}
+  body{ background-color: black;}
 
   
   .title {
@@ -150,6 +150,7 @@ body {
 }
 
   .title {
+    font-family: 'Permanent+Marker', cursive; 
     transition-duration: 4s;
     animation: 1s slide-left;
     transition: ease-in;
