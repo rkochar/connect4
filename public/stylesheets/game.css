@@ -1,0 +1,54 @@
+.board button {
+    display: block;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 0;
+    margin: 1px;
+    background: #D9F1FA;
+  }
+
+  .board button:hover {
+    filter: brightness(75%);
+  }
+  
+  .center {
+    text-align: bottom; 
+  }
+
+    .prefix{
+    font-family: "Segoe UI";
+    color: #6BC5D3
+  }
+.prefix1{
+  font-family: "Segoe UI";
+  color: #6BC5D3
+}
+.current-player{
+  font-family: "Segoe UI";
+  color: #6BC5D3
+}
+.other-player{
+  font-family: "Segoe UI";
+  color: #6BC5D3
+}
+
+  .fullScreen::before {
+    content: "Open Fullscreen"
+  }
+
+  .closeScreen::after {
+    content: "Close FullScreen";
+    position: relative;
+    left: 2px;
+    transition: width 2s, height 2s, background-color 5s, transform 10s;
+  }
+
+  .closeScreen:hover {
+    transform: rotate(70deg);
+    background-color: red;
+  }
+
+  .activeButton::active {
+    font: red
+  }s
