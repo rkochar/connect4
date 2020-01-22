@@ -46,11 +46,12 @@
     <main>
 
         <ul class="menu">
-          <li style="color:whitesmoke" style="font-family:'Segoe UI'"class="activeButton"><a href="http://localhost:3000/game.html">Play</a></li>
+          <li style="color:whitesmoke" style="font-family:'Segoe UI'"class="activeButton"><a href="http://localhost:3000/play">Play</a></li>
           <li style="color:whitesmoke" style="font-family:'Segoe UI'"><a href="self.close()">Exit</a></li>
           <li style="color:whitesmoke" style="font-family:'Segoe UI'">Games Completed = <%= gamesCompleted %></li>
           <li style="color:whitesmoke" style="font-family:'Segoe UI'">Games Initialized =<%= gameInitialized %></li>
           <h3 style="color:whitesmoke" style="font-family:'Segoe UI'"id="userVisit">Number of visits: <h3>
+          <h2 style="color:whitesmoke; font-family:'Segoe UI'"  id="screenIsSmall">Screen is small: <h2>
         </ul>
         
 
@@ -58,14 +59,15 @@
 
 
     </main>
-
-    <script src="../public/javascript/cookie.js"></script>
-    <script src="../public/javascript/splash.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/javascript/cookie.js"></script>
+    <script src="/javascript/splash.js"></script>
     <script >
             window.onload = function(){
-            document.body.style.backgroundColor= #26628A;
-            checkScreen()
+            document.body.style.backgroundColor= "#26628A";
+            //checkScreen()
         }
     </script>
+
   </body>
 </html>

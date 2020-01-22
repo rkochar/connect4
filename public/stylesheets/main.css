@@ -1,9 +1,13 @@
+
+
 body {
     font-family:sans-serif;
     padding: 0.1px; /* prevent margin overflow */
     margin: 0;
   }
   
+    body{ background-color: #26628A;}
+
   .title {
     font-size: 2rem;
   }
@@ -196,4 +200,13 @@ body {
 .title1 {
   color: #6BC5D3;
   font-family: "Segoe UI";
+}
+
+@media screen and (min-height: 700px) and (min-width: 1200px){
+
+  #screenIsSmall {
+    display: none
+  }
+  /*console.log("Screen size is low")*/
+  /*alert("Higher size is recommended")*/
 }

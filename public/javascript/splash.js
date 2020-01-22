@@ -22,14 +22,14 @@ function openFullscreen() {
     }
   }
 
-  async function checkScreen() {
-    var screenHeight = $(window).win.height()
-    var screenWidth = $(window).width()
+  // async function checkScreen() {
+  //   var screenHeight = $(window).win.height()
+  //   var screenWidth = $(window).width()
 
-    var browserHeight = $(document).height();
-    var browserWidth = $(document).width();
+  //   var browserHeight = $(document).height();
+  //   var browserWidth = $(document).width();
 
-    if (screenHeight - browserHeight != 0 || screenWidth - browserWidth != 0) {
-      alert("Fullscreen is recommended")
-    }
-  }
+  //   if (screenHeight - browserHeight != 0 || screenWidth - browserWidth != 0) {
+  //     alert("Fullscreen is recommended")
+  //   }
+  //}

@@ -36,6 +36,7 @@ ws.onmessage = function (message) {
         document.getElementById("current-player").innerHTML = "Player A";
         document.getElementById("prefix1").innerHTML = "Next Player is: ";
         document.getElementById("other-player").innerHTML = "Player B";
+        document.getElementById("empty-circles").innerHTML = "Number of empty circles is: 42";
         if (check.localeCompare("A") == 0) {
             alert("player joined")
             turn = true
@@ -51,9 +52,11 @@ ws.onmessage = function (message) {
         if (check.localeCompare("A") == 0) {
             document.getElementById("current-player").innerHTML = "Player A";
             document.getElementById("other-player").innerHTML = "Player B";
+            document.getElementById("empty-circles").innerHTML = "Number of empty-circles is: " + countEmptyCircles();
         } else {
             document.getElementById("current-player").innerHTML = "Player B";
             document.getElementById("other-player").innerHTML = "Player A";
+            document.getElementById("empty-circles").innerHTML = "Number of empty-circles is: " + countEmptyCircles();
         }
     }
 
@@ -180,5 +183,22 @@ function win() {
         }
     }
     return false;
+}
+
+function countEmptyCircles() {
+    var height = 6
+    var width = 7
+    var count = 0
+
+    for (var i = 0; i < height; i ++) {
+        for (var j = 0; j < width; j ++) {
+            var circle = gameBoard3[i][j]
+            if (circle == 0) {
+                count ++
+            }
+        }
+    }
+
+    return count
 }
 
