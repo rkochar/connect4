@@ -1,13 +1,9 @@
-var cookiesArray = document.cookie.split('; ');
-
-
-if(cookiesArray.length == 2){
-    document.cookie = "0";
-}else{
-	// var cook = parseInt(document.cookie)
- //    cook += 1
- document.cookie = cookiesArray[2] - 1 + 2
+if(document.cookie!==0)
+{
+    document.cookie++
 }
-
-var text = document.getElementById("userVisit");
-text.innerHTML = document.cookie + " userVisit";	
+else{
+    document.cookie=1
+}
+var text = document.getElementById('cookie');
+text.innerHTML = "You have visited the page "+document.cookie+" times";

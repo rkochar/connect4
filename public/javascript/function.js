@@ -6,6 +6,7 @@ ws.onopen = function (event) {
     console.log('Connection is open ...');
 };
 
+var count = 42;
 var turn = false;
 var gameBoard3 = [];
 var check = 0;
@@ -36,13 +37,15 @@ ws.onmessage = function (message) {
         document.getElementById("current-player").innerHTML = "Player A";
         document.getElementById("prefix1").innerHTML = "Next Player is: ";
         document.getElementById("other-player").innerHTML = "Player B";
-        document.getElementById("empty-circles").innerHTML = "Number of empty circles is: 42";
+
         if (check.localeCompare("A") == 0) {
             alert("player joined")
             turn = true
             document.getElementById("title1").innerHTML = "You are Player A";
+            document.getElementById("empty-circles").innerHTML = "Number of empty circles is: "+count;
         } else {
             document.getElementById("title1").innerHTML = "You are Player B";
+            document.getElementById("empty-circles").innerHTML = "Number of empty circles is: "+count;
 
         }
     }
@@ -52,11 +55,13 @@ ws.onmessage = function (message) {
         if (check.localeCompare("A") == 0) {
             document.getElementById("current-player").innerHTML = "Player A";
             document.getElementById("other-player").innerHTML = "Player B";
-            document.getElementById("empty-circles").innerHTML = "Number of empty-circles is: " + countEmptyCircles();
+            count --;
+            document.getElementById("empty-circles").innerHTML = "Number of empty circles is: "+count;
         } else {
             document.getElementById("current-player").innerHTML = "Player B";
             document.getElementById("other-player").innerHTML = "Player A";
-            document.getElementById("empty-circles").innerHTML = "Number of empty-circles is: " + countEmptyCircles();
+            count --;
+            document.getElementById("empty-circles").innerHTML = "Number of empty circles is: "+count;
         }
     }
 
@@ -95,7 +100,8 @@ function checkElement(e) {
                 button.style.background = '#F15942';
                 alert("next player");
                 document.getElementById("current-player").innerHTML = "Player B";
-
+                count--;
+                document.getElementById("empty-circles").innerHTML = "Number of empty circles is: "+count;
                 var element = document.getElementById("other-player");
                 element.innerHTML = "Player A";
                 var msg = {
@@ -123,7 +129,8 @@ function checkElement(e) {
                 button.style.background = '#3F404A';
                 alert("next player");
                 document.getElementById("current-player").innerHTML = "Player A";
-
+                count --;
+                document.getElementById("empty-circles").innerHTML = "Number of empty circles is: "+count;
                 var element = document.getElementById("other-player");
                 element.innerHTML = "Player B";
                 var msg = {
