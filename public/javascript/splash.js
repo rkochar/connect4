@@ -29,7 +29,7 @@ function openFullscreen() {
     var browserHeight = $(document).height();
     var browserWidth = $(document).width();
 
-    if (screenHeight - browserHeight === 0 || screenWidth - browserWidth === 0) {
-      window.alert("Fullscreen is recommended")
+    if (screenHeight - browserHeight != 0 || screenWidth - browserWidth != 0) {
+      alert("Fullscreen is recommended")
     }
   }
